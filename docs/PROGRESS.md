@@ -1,7 +1,7 @@
 # xo-plus — Development Progress Tracker
 
 **Document status:** Living document
-**Last updated:** 2026-06-04 (Phase 0 AFK tasks complete)
+**Last updated:** 2026-06-05 (Phase 1 complete)
 **Related:** [[DEVELOPMENT_PLAN]] · [[TESTING]] · [[DOCS_WIKI]] — plain: [DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md)
 
 Shared, living checklist of what's built and what isn't. Mirrors the phases/tasks of [[DEVELOPMENT_PLAN]] one-to-one. **Both of us update this file** as work lands — it's the single source of truth for "where are we."
@@ -23,11 +23,11 @@ Shared, living checklist of what's built and what isn't. Mirrors the phases/task
 | | |
 |---|---|
 | **Current version target** | v1 — Local Hot-Seat |
-| **Current phase** | Phase 0 — Scaffolding (AFK tasks done; awaiting HITL 0.6, 0.7) |
-| **Overall v1 progress** | 0 / 6 phases complete |
+| **Current phase** | Phase 2 — Functional UI |
+| **Overall v1 progress** | 1 / 6 phases complete |
 | **Overall v2 progress** | 0 / 6 phases complete |
-| **Last activity** | 2026-06-04 — Phase 0 AFK tasks (0.1–0.5) complete |
-| **Next up** | HITL: 0.6 (git/remote), 0.7 (deploy target), then Phase 1 |
+| **Last activity** | 2026-06-05 — Phase 1 engine complete (43 unit tests green) |
+| **Next up** | Phase 2 — Functional UI (2.1 useReducer → 2.8 end-state banner) |
 
 ---
 
@@ -42,24 +42,24 @@ Shared, living checklist of what's built and what isn't. Mirrors the phases/task
 | 0.3 | Vitest + React Testing Library | 🤖 AFK | ✅ | vitest 2 + RTL 16 + jsdom |
 | 0.4 | ESLint + Prettier + TS strict | 🤖 AFK | ✅ | eslint 8 + prettier 3 + strict tsconfig |
 | 0.5 | npm scripts | 🤖 AFK | ✅ | dev, build, preview, test, test:run, lint, format |
-| 0.6 | git init / remote | 🧑 HITL | 🟡 | Awaiting decision |
-| 0.7 | Choose deploy target | 🧑 HITL | 🟡 | Awaiting decision |
-| — | **Acceptance gate:** dev server + tests run | 🧑 | 🟡 | build ✅, vitest runs ✅ — awaiting your sign-off |
+| 0.6 | git init / remote | 🧑 HITL | 🟡 | git init + initial commit done; remote pending (user to create GitHub repo) |
+| 0.7 | Choose deploy target | 🧑 HITL | ✅ | Netlify — netlify.toml added |
+| — | **Acceptance gate:** dev server + tests run | 🧑 | 🟡 | build ✅, vitest runs ✅ — run `npm run dev` to verify locally |
 
-## Phase 1 — Core Rules Engine  ⬜
+## Phase 1 — Core Rules Engine  ✅
 
 | # | Task | Tag | Status | Notes |
 |---|------|-----|--------|-------|
-| 1.1 | Types & state model | 🤖 AFK | ⬜ | |
-| 1.2 | `createInitialState()` | 🤖 AFK | ⬜ | |
-| 1.3 | Win-lines + `lineWinner()` | 🤖 AFK | ⬜ | |
-| 1.4 | `getLegalMoves` / `isLegalMove` | 🤖 AFK | ⬜ | |
-| 1.5 | `applyMove` (immutable) | 🤖 AFK | ⬜ | |
-| 1.6 | `getActiveBoard` / free-move | 🤖 AFK | ⬜ | |
-| 1.7 | Win/draw resolution | 🤖 AFK | ⬜ | |
-| 1.8 | Undo (history) | 🤖 AFK | ⬜ | |
-| 1.9 | Unit tests (GDD §10 checklist) | 🤖 AFK | ⬜ | See [[TESTING]] §3 |
-| — | **Acceptance gate:** all §10 tests green | 🧑 | ⬜ | |
+| 1.1 | Types & state model | 🤖 AFK | ✅ | `src/engine/types.ts` |
+| 1.2 | `createInitialState()` | 🤖 AFK | ✅ | `src/engine/state.ts` |
+| 1.3 | Win-lines + `lineWinner()` | 🤖 AFK | ✅ | `src/engine/constants.ts` + `state.ts` |
+| 1.4 | `getLegalMoves` / `isLegalMove` | 🤖 AFK | ✅ | `src/engine/rules.ts` |
+| 1.5 | `applyMove` (immutable) | 🤖 AFK | ✅ | `src/engine/rules.ts` |
+| 1.6 | `getActiveBoard` / free-move | 🤖 AFK | ✅ | Inlined in `applyMove`; null = free move |
+| 1.7 | Win/draw resolution | 🤖 AFK | ✅ | `resolveGame` in `state.ts` |
+| 1.8 | Undo (history) | 🤖 AFK | ✅ | `undo` in `rules.ts` — replays history |
+| 1.9 | Unit tests (GDD §10 checklist) | 🤖 AFK | ✅ | 43 tests green — `src/engine/__tests__/engine.test.ts` |
+| — | **Acceptance gate:** all §10 tests green | 🧑 | ✅ | 2026-06-05 — 43/43 pass |
 
 ## Phase 2 — Functional UI  ⬜
 
@@ -207,5 +207,6 @@ Brief running notes of notable progress (newest first).
 
 | Date | Update |
 |------|--------|
+| 2026-06-05 | Phase 1 complete: full rules engine (`types`, `constants`, `state`, `rules`) + 43 unit tests covering every GDD §10 checklist item. |
 | 2026-06-04 | Phase 0 AFK tasks done: Vite+React+TS scaffold, SCSS, Vitest, ESLint, Prettier, folder structure. |
 | 2026-06-04 | Docs set up (GDD, plan, testing, wiki, this tracker). No code yet. |
