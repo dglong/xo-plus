@@ -1,0 +1,117 @@
+@use '../styles/variables' as *;
+
+.cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: $cell-min-size;
+  min-height: $cell-min-size;
+  width: 100%;
+  height: 100%;
+  padding: 8%;
+  background: $color-paper;
+  border: none;
+  border-radius: $border-radius-sm;
+  transition: background $transition-fast;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+
+  // Mark animation: path draws on when element first mounts
+  .mark__path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw-stroke $anim-draw ease-out forwards;
+  }
+
+  .mark__path--x2 {
+    animation-delay: #{$anim-draw * 0.55};
+  }
+
+  .mark__path--o {
+    animation-duration: #{$anim-draw * 1.15};
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mark__path {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  &--x .mark {
+    color: $color-x;
+  }
+
+  &--o .mark {
+    color: $color-o;
+  }
+
+  // Hover ghost (desktop only)
+  &__ghost {
+    position: absolute;
+    inset: 8%;
+    opacity: 0;
+    transition: opacity $transition-fast;
+    pointer-events: none;
+
+    .mark { color: $color-ink-muted; }
+    .mark__path { animation: none; stroke-dashoffset: 0; }
+  }
+
+  &--legal:not(:disabled) {
+    cursor: pointer;
+
+    @media (hover: hover) {
+      &:hover .cell__ghost {
+        opacity: 0.35;
+      }
+
+      &:hover {
+        background: $color-ink-faint;
+      }
+    }
+  }
+
+  // Touch pending state
+  &__pending-mark {
+    position: absolute;
+    inset: 8%;
+    pointer-events: none;
+
+    .mark { color: $color-ink; }
+    .mark__path { animation: none; stroke-dashoffset: 0; }
+  }
+
+  &--pending {
+    background: $color-ink-faint;
+
+    .cell__pending-mark {
+      opacity: 0.55;
+    }
+  }
+
+  // Last-move dot
+  &__last-dot {
+    position: absolute;
+    bottom: 14%;
+    right: 14%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: $color-grid;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &--last-move {
+    // subtle background tint on the last-played cell
+    background: $color-ink-faint;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-x;
+    outline-offset: 1px;
+    z-index: 1;
+  }
+}

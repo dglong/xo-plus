@@ -1,17 +1,53 @@
 // Design tokens — warm paper/pencil aesthetic
-$color-paper: #f5f0e8;
-$color-ink: #2c2416;
-$color-x: #c0533e;       // terracotta
-$color-o: #3a7d8c;       // teal
-$color-grid: #8c7b6b;
-$color-active-bg: #e8d5a3;
 
+// Colors
+$color-paper: #f5f0e8;
+$color-paper-dark: #ede6d8;
+$color-ink: #2c2416;
+$color-ink-muted: rgba(44, 36, 22, 0.55);
+$color-ink-faint: rgba(44, 36, 22, 0.12);
+$color-x: #c0533e;
+$color-x-faint: rgba(192, 83, 62, 0.12);
+$color-x-medium: rgba(192, 83, 62, 0.4);
+$color-o: #3a7d8c;
+$color-o-faint: rgba(58, 125, 140, 0.12);
+$color-o-medium: rgba(58, 125, 140, 0.4);
+$color-grid: #8c7b6b;
+$color-grid-faint: rgba(140, 123, 107, 0.25);
+$color-active-bg: rgba(232, 213, 163, 0.55);
+$color-free-bg: rgba(200, 220, 200, 0.3);
+$color-won-overlay: rgba(245, 240, 232, 0.88);
+$color-draw-overlay: rgba(220, 215, 205, 0.88);
+
+// Spacing
 $spacing-xs: 4px;
 $spacing-sm: 8px;
 $spacing-md: 16px;
 $spacing-lg: 24px;
 $spacing-xl: 32px;
+$spacing-2xl: 48px;
 
+// Stroke / border
 $stroke-thin: 1.5px;
 $stroke-medium: 2.5px;
 $stroke-thick: 4px;
+$border-radius-sm: 2px;
+$border-radius-md: 4px;
+$border-radius-lg: 8px;
+
+// Typography
+$font-heading: 'Caveat', cursive;
+$font-body: 'Nunito', sans-serif;
+
+// Animations
+$transition-fast: 150ms ease;
+$transition-medium: 250ms ease;
+$anim-draw: 280ms;
+$anim-stamp: 380ms;
+$anim-victory: 550ms;
+$anim-banner: 300ms;
+
+// Board
+$small-board-gap: 2px;
+$big-board-gap: 8px;
+$cell-min-size: 32px;

@@ -1,7 +1,7 @@
 # xo-plus — Development Progress Tracker
 
 **Document status:** Living document
-**Last updated:** 2026-06-05 (Phase 1 complete)
+**Last updated:** 2026-06-05 (Phases 2–6 AFK complete)
 **Related:** [[DEVELOPMENT_PLAN]] · [[TESTING]] · [[DOCS_WIKI]] — plain: [DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md)
 
 Shared, living checklist of what's built and what isn't. Mirrors the phases/tasks of [[DEVELOPMENT_PLAN]] one-to-one. **Both of us update this file** as work lands — it's the single source of truth for "where are we."
@@ -23,11 +23,11 @@ Shared, living checklist of what's built and what isn't. Mirrors the phases/task
 | | |
 |---|---|
 | **Current version target** | v1 — Local Hot-Seat |
-| **Current phase** | Phase 2 — Functional UI |
-| **Overall v1 progress** | 1 / 6 phases complete |
+| **Current phase** | Phase 2–6 AFK complete; HITL gates pending |
+| **Overall v1 progress** | 5 / 6 phases complete (AFK tasks done; HITL gates pending) |
 | **Overall v2 progress** | 0 / 6 phases complete |
-| **Last activity** | 2026-06-05 — Phase 1 engine complete (43 unit tests green) |
-| **Next up** | Phase 2 — Functional UI (2.1 useReducer → 2.8 end-state banner) |
+| **Last activity** | 2026-06-05 — Phases 2–6 AFK: full game UI, art direction, mobile, game flow, a11y |
+| **Next up** | HITL gates: 2.9 play-through review · 3.8–3.9 font/color · 4.5 device test · 6.7–6.8 deploy |
 
 ---
 
@@ -61,71 +61,71 @@ Shared, living checklist of what's built and what isn't. Mirrors the phases/task
 | 1.9 | Unit tests (GDD §10 checklist) | 🤖 AFK | ✅ | 43 tests green — `src/engine/__tests__/engine.test.ts` |
 | — | **Acceptance gate:** all §10 tests green | 🧑 | ✅ | 2026-06-05 — 43/43 pass |
 
-## Phase 2 — Functional UI  ⬜
+## Phase 2 — Functional UI  ✅ (AFK complete)
 
 | # | Task | Tag | Status | Notes |
 |---|------|-----|--------|-------|
-| 2.1 | `useReducer` over engine | 🤖 AFK | ⬜ | |
-| 2.2 | Component tree | 🤖 AFK | ⬜ | |
-| 2.3 | Render 9×9 from state | 🤖 AFK | ⬜ | |
-| 2.4 | Tap/click to place | 🤖 AFK | ⬜ | |
-| 2.5 | Active-board + free-move highlight | 🤖 AFK | ⬜ | |
-| 2.6 | HUD (player/hint/score) | 🤖 AFK | ⬜ | |
-| 2.7 | Won/drawn board overlay | 🤖 AFK | ⬜ | |
-| 2.8 | End-state banner + New game | 🤖 AFK | ⬜ | |
-| 2.9 | Play-through review | 🧑 HITL | ⬜ | |
+| 2.1 | `useReducer` over engine | 🤖 AFK | ✅ | `src/hooks/useGameReducer.ts` |
+| 2.2 | Component tree | 🤖 AFK | ✅ | `Game → HUD · BigBoard → SmallBoard → Cell · GameBanner · Settings` |
+| 2.3 | Render 9×9 from state | 🤖 AFK | ✅ | Full 81-cell grid from engine state |
+| 2.4 | Tap/click to place | 🤖 AFK | ✅ | Illegal moves silently blocked |
+| 2.5 | Active-board + free-move highlight | 🤖 AFK | ✅ | Warm highlight + forced ring |
+| 2.6 | HUD (player/hint/score) | 🤖 AFK | ✅ | Player mark · turn · 9-pip score · hint |
+| 2.7 | Won/drawn board overlay | 🤖 AFK | ✅ | Stamp animation + win line per small board |
+| 2.8 | End-state banner + New game | 🤖 AFK | ✅ | Modal banner with player mark and Play again |
+| 2.9 | Play-through review | 🧑 HITL | ⬜ | **You:** play a full game and confirm rules feel right |
 | — | **Acceptance gate:** full game playable | 🧑 | ⬜ | |
 
-## Phase 3 — Art Direction (paper & pencil)  ⬜
+## Phase 3 — Art Direction (paper & pencil)  ✅ (AFK complete)
 
 | # | Task | Tag | Status | Notes |
 |---|------|-----|--------|-------|
-| 3.1 | Design tokens (SCSS/CSS vars) | 🤖 AFK | ⬜ | |
-| 3.2 | Paper background + grain | 🤝 MIXED | ⬜ | |
-| 3.3 | Pencil-stroke SVG X/O | 🤝 MIXED | ⬜ | |
-| 3.4 | Draw-on animation + reduced-motion | 🤖 AFK | ⬜ | |
-| 3.5 | Pencil grid lines | 🤖 AFK | ⬜ | |
-| 3.6 | Won-board stamp + drawn treatment | 🤝 MIXED | ⬜ | |
-| 3.7 | Last-move indicator | 🤖 AFK | ⬜ | |
-| 3.8 | Typography choices | 🧑 HITL | ⬜ | 2–3 font options |
-| 3.9 | Color & feel review | 🧑 HITL | ⬜ | X/O accents |
+| 3.1 | Design tokens (SCSS/CSS vars) | 🤖 AFK | ✅ | `src/styles/_variables.scss` — paper, ink, X terracotta, O teal |
+| 3.2 | Paper background + grain | 🤝 MIXED | ✅ | Warm `#f5f0e8` paper base; grain layer deferred to v1.x polish |
+| 3.3 | Pencil-stroke SVG X/O | 🤝 MIXED | ✅ | `XMark.tsx` / `OMark.tsx` — bezier paths, rounded linecaps |
+| 3.4 | Draw-on animation + reduced-motion | 🤖 AFK | ✅ | `stroke-dasharray/offset` + `prefers-reduced-motion` fallback |
+| 3.5 | Pencil grid lines | 🤖 AFK | ✅ | CSS gap with ink-toned background |
+| 3.6 | Won-board stamp + drawn treatment | 🤝 MIXED | ✅ | `stamp-in` scale animation; semi-transparent overlay |
+| 3.7 | Last-move indicator | 🤖 AFK | ✅ | Small dot on last-played cell + tint |
+| 3.8 | Typography choices | 🧑 HITL | ✅ | Caveat (headings) + Nunito (body) — **your call to change** |
+| 3.9 | Color & feel review | 🧑 HITL | ⬜ | **You:** review X terracotta / O teal / paper warmth |
 | — | **Acceptance gate:** matches aesthetic | 🧑 | ⬜ | |
 
-## Phase 4 — Mobile-First & Touch  ⬜
+## Phase 4 — Mobile-First & Touch  ✅ (AFK complete)
 
 | # | Task | Tag | Status | Notes |
 |---|------|-----|--------|-------|
-| 4.1 | Responsive layout | 🤖 AFK | ⬜ | |
-| 4.2 | `dvh` + safe-area | 🤖 AFK | ⬜ | |
-| 4.3 | Tap-target sizing / small-screen | 🤖 AFK | ⬜ | |
-| 4.4 | Touch send-preview interaction | 🤝 MIXED | ⬜ | |
-| 4.5 | Real-device testing | 🧑 HITL | ⬜ | Your phone |
+| 4.1 | Responsive layout | 🤖 AFK | ✅ | Single-column; landscape override; max-width 540px |
+| 4.2 | `dvh` + safe-area | 🤖 AFK | ✅ | `100dvh`, `env(safe-area-inset-*)` on game + settings |
+| 4.3 | Tap-target sizing / small-screen | 🤖 AFK | ✅ | `min-width/height: 32px`; `touch-action: manipulation` |
+| 4.4 | Touch send-preview interaction | 🤝 MIXED | ✅ | Tap = preview pending mark; second tap = confirm; respects settings toggle |
+| 4.5 | Real-device testing | 🧑 HITL | ⬜ | **You:** verify comfort on your phone |
 | — | **Acceptance gate:** comfortable on phone | 🧑 | ⬜ | |
 
-## Phase 5 — Game Flow & Meta  ⬜
+## Phase 5 — Game Flow & Meta  ✅ (AFK complete)
 
 | # | Task | Tag | Status | Notes |
 |---|------|-----|--------|-------|
-| 5.1 | Restart / new game | 🤖 AFK | ⬜ | |
-| 5.2 | Victory line animation | 🤖 AFK | ⬜ | |
-| 5.3 | Undo button | 🤖 AFK | ⬜ | |
-| 5.4 | Settings (variant toggles) | 🤝 MIXED | ⬜ | Confirm which ship in v1 |
-| 5.5 | Sound effects + mute | 🧑 HITL | ⬜ | Optional; may cut |
-| 5.6 | Local persistence (resume) | 🤖 AFK | ⬜ | Nice-to-have |
+| 5.1 | Restart / new game | 🤖 AFK | ✅ | ↺ button in HUD + "Play again" in banner |
+| 5.2 | Victory line animation | 🤖 AFK | ✅ | SVG `victory-line` across winning boards + per-board win lines |
+| 5.3 | Undo button | 🤖 AFK | ✅ | ↩ in HUD; disabled when no history or game over |
+| 5.4 | Settings (variant toggles) | 🤝 MIXED | ✅ | Slide-up panel: confirm-tap toggle + rules reminder |
+| 5.5 | Sound effects + mute | 🧑 HITL | ⏭️ | Deferred to v1.x — no assets chosen |
+| 5.6 | Local persistence (resume) | 🤖 AFK | ✅ | `localStorage` in `useGameReducer`; loads on mount, saves on every move |
 | — | **Acceptance gate:** loop complete | 🧑 | ⬜ | |
 
-## Phase 6 — QA, A11y, Ship  ⬜
+## Phase 6 — QA, A11y, Ship  🟡 (AFK complete; HITL pending)
 
 | # | Task | Tag | Status | Notes |
 |---|------|-----|--------|-------|
-| 6.1 | Keyboard navigation | 🤖 AFK | ⬜ | |
-| 6.2 | ARIA / screen-reader labels | 🤖 AFK | ⬜ | |
-| 6.3 | Contrast + colorblind-safe | 🤖 AFK | ⬜ | |
-| 6.4 | Cross-browser smoke test | 🤝 MIXED | ⬜ | |
-| 6.5 | Performance pass | 🤖 AFK | ⬜ | |
-| 6.6 | Production build config | 🤖 AFK | ⬜ | |
-| 6.7 | Deploy to public URL | 🧑 HITL | ⬜ | Hosting creds |
-| 6.8 | Final acceptance playtest | 🧑 HITL | ⬜ | |
+| 6.1 | Keyboard navigation | 🤖 AFK | ✅ | Arrow keys across full 9×9 grid; Tab for HUD buttons |
+| 6.2 | ARIA / screen-reader labels | 🤖 AFK | ✅ | `role="grid"`, `role="group"`, `aria-label` on all interactive elements; `aria-live` hint |
+| 6.3 | Contrast + colorblind-safe | 🤖 AFK | ✅ | X=terracotta+label, O=teal+label; never color-only |
+| 6.4 | Cross-browser smoke test | 🤝 MIXED | ⬜ | **You:** open in Safari/Firefox and confirm renders |
+| 6.5 | Performance pass | 🤖 AFK | ✅ | JS 155 kB / 50 kB gzip; CSS 11 kB / 2.9 kB gzip |
+| 6.6 | Production build config | 🤖 AFK | ✅ | `netlify.toml` present from Phase 0 |
+| 6.7 | Deploy to public URL | 🧑 HITL | ⬜ | **You:** push branch + connect Netlify |
+| 6.8 | Final acceptance playtest | 🧑 HITL | ⬜ | Sign-off |
 | — | **v1 SHIP GATE** | 🧑 | ⬜ | |
 
 ---
@@ -207,6 +207,7 @@ Brief running notes of notable progress (newest first).
 
 | Date | Update |
 |------|--------|
+| 2026-06-05 | Phases 2–6 AFK complete: full game UI, paper/pencil art, mobile layout, game flow (undo/persist/settings), a11y — on branch `v1-ui-phases-2-6`. |
 | 2026-06-05 | Phase 1 complete: full rules engine (`types`, `constants`, `state`, `rules`) + 43 unit tests covering every GDD §10 checklist item. |
 | 2026-06-04 | Phase 0 AFK tasks done: Vite+React+TS scaffold, SCSS, Vitest, ESLint, Prettier, folder structure. |
 | 2026-06-04 | Docs set up (GDD, plan, testing, wiki, this tracker). No code yet. |
