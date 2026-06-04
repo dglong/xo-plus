@@ -1,0 +1,16 @@
+@use './variables' as *;
+@use './reset';
+
+body {
+  background-color: $color-paper;
+  color: $color-ink;
+  font-family: sans-serif;
+}
+
+.app {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-md;
+}
