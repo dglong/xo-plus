@@ -9,6 +9,7 @@
   &__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     gap: $small-board-gap;
     background: $color-grid-faint;
     border-radius: $border-radius-sm;
@@ -18,12 +19,17 @@
 
   // Active board highlight
   &--active &__grid {
-    background: $color-active-bg;
+    background: rgba(232, 213, 163, 0.75);
   }
 
-  // Forced (the specific required board) gets a stronger ring
+  // Forced board (the ONE board the player must play in) — unmistakable ring
   &--forced {
-    box-shadow: 0 0 0 2px $color-grid, 0 0 0 4px $color-active-bg;
+    border-radius: $border-radius-sm;
+    box-shadow:
+      0 0 0 3px $color-grid,
+      0 0 0 6px rgba(232, 213, 163, 0.9),
+      0 0 16px 2px rgba(140, 123, 107, 0.25);
+    z-index: 1;
   }
 
   // Win line SVG overlay
