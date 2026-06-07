@@ -16,7 +16,7 @@ The hub for all xo-plus documentation. Use the wiki-style links (`[[NAME]]`) to 
 | Game Design Document | `[[GAME_DESIGN_DOCUMENT]]` | [GAME_DESIGN_DOCUMENT.md](./GAME_DESIGN_DOCUMENT.md) | Draft v1.1 | 2026-06-04 |
 | Development Plan | `[[DEVELOPMENT_PLAN]]` | [DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md) | Draft v1.0 | 2026-06-04 |
 | Testing | `[[TESTING]]` | [TESTING.md](./TESTING.md) | Draft v1.0 | 2026-06-04 |
-| Progress Tracker | `[[PROGRESS]]` | [PROGRESS.md](./PROGRESS.md) | Living | 2026-06-04 |
+| Progress Tracker | `[[PROGRESS]]` | [PROGRESS.md](./PROGRESS.md) | Living | 2026-06-07 |
 | Docs Wiki (this page) | `[[DOCS_WIKI]]` | [DOCS_WIKI.md](./DOCS_WIKI.md) | Living | 2026-06-04 |
 
 ---

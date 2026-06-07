@@ -1,7 +1,7 @@
 # xo-plus — Development Progress Tracker
 
 **Document status:** Living document
-**Last updated:** 2026-06-05 (Phases 2–6 AFK complete)
+**Last updated:** 2026-06-07 (🚢 v1 SHIPPED — merged to master, deployed, signed off)
 **Related:** [[DEVELOPMENT_PLAN]] · [[TESTING]] · [[DOCS_WIKI]] — plain: [DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md)
 
 Shared, living checklist of what's built and what isn't. Mirrors the phases/tasks of [[DEVELOPMENT_PLAN]] one-to-one. **Both of us update this file** as work lands — it's the single source of truth for "where are we."
@@ -22,18 +22,19 @@ Shared, living checklist of what's built and what isn't. Mirrors the phases/task
 
 | | |
 |---|---|
-| **Current version target** | v1 — Local Hot-Seat |
-| **Current phase** | Phase 2–6 AFK complete; HITL gates pending |
-| **Overall v1 progress** | 5 / 6 phases complete (AFK tasks done; HITL gates pending) |
+| **Current version target** | ✅ v1 SHIPPED — next up: v2 (Online Multiplayer) |
+| **Current phase** | v1 complete & live; v2 not started |
+| **Overall v1 progress** | ✅ 6 / 6 phases complete — signed off 2026-06-07 |
 | **Overall v2 progress** | 0 / 6 phases complete |
-| **Last activity** | 2026-06-05 — Phases 2–6 AFK: full game UI, art direction, mobile, game flow, a11y |
-| **Next up** | HITL gates: 2.9 play-through review · 3.8–3.9 font/color · 4.5 device test · 6.7–6.8 deploy |
+| **Live URL** | https://tangerine-torte-c01620.netlify.app/ (auto-deploys from `master`) |
+| **Last activity** | 2026-06-07 — 🚢 v1 shipped: PR #2 merged to master, deployed to Netlify, mobile verified, official sign-off |
+| **Next up** | ⏸️ v2 parked — happy with local hot-seat for now; revisit v2 (online multiplayer) later |
 
 ---
 
 # v1 — Local Hot-Seat
 
-## Phase 0 — Scaffolding & Tooling  ⬜
+## Phase 0 — Scaffolding & Tooling  ✅
 
 | # | Task | Tag | Status | Notes |
 |---|------|-----|--------|-------|
@@ -42,9 +43,9 @@ Shared, living checklist of what's built and what isn't. Mirrors the phases/task
 | 0.3 | Vitest + React Testing Library | 🤖 AFK | ✅ | vitest 2 + RTL 16 + jsdom |
 | 0.4 | ESLint + Prettier + TS strict | 🤖 AFK | ✅ | eslint 8 + prettier 3 + strict tsconfig |
 | 0.5 | npm scripts | 🤖 AFK | ✅ | dev, build, preview, test, test:run, lint, format |
-| 0.6 | git init / remote | 🧑 HITL | 🟡 | git init + initial commit done; remote pending (user to create GitHub repo) |
+| 0.6 | git init / remote | 🧑 HITL | ✅ | Remote live: `origin → github.com/dglong/xo-plus.git`; all branches pushed |
 | 0.7 | Choose deploy target | 🧑 HITL | ✅ | Netlify — netlify.toml added |
-| — | **Acceptance gate:** dev server + tests run | 🧑 | 🟡 | build ✅, vitest runs ✅ — run `npm run dev` to verify locally |
+| — | **Acceptance gate:** dev server + tests run | 🧑 | ✅ | 2026-06-07 — prod build verified green (`npm run build`); vitest runs ✅ |
 
 ## Phase 1 — Core Rules Engine  ✅
 
@@ -61,7 +62,7 @@ Shared, living checklist of what's built and what isn't. Mirrors the phases/task
 | 1.9 | Unit tests (GDD §10 checklist) | 🤖 AFK | ✅ | 43 tests green — `src/engine/__tests__/engine.test.ts` |
 | — | **Acceptance gate:** all §10 tests green | 🧑 | ✅ | 2026-06-05 — 43/43 pass |
 
-## Phase 2 — Functional UI  ✅ (AFK complete)
+## Phase 2 — Functional UI  ✅
 
 | # | Task | Tag | Status | Notes |
 |---|------|-----|--------|-------|
@@ -73,10 +74,10 @@ Shared, living checklist of what's built and what isn't. Mirrors the phases/task
 | 2.6 | HUD (player/hint/score) | 🤖 AFK | ✅ | Player mark · turn · 9-pip score · hint |
 | 2.7 | Won/drawn board overlay | 🤖 AFK | ✅ | Stamp animation + win line per small board |
 | 2.8 | End-state banner + New game | 🤖 AFK | ✅ | Modal banner with player mark and Play again |
-| 2.9 | Play-through review | 🧑 HITL | ⬜ | **You:** play a full game and confirm rules feel right |
-| — | **Acceptance gate:** full game playable | 🧑 | ⬜ | |
+| 2.9 | Play-through review | 🧑 HITL | ✅ | 2026-06-07 — user played full game, rules confirmed correct |
+| — | **Acceptance gate:** full game playable | 🧑 | ✅ | 2026-06-07 — signed off |
 
-## Phase 3 — Art Direction (paper & pencil)  ✅ (AFK complete)
+## Phase 3 — Art Direction (paper & pencil)  ✅
 
 | # | Task | Tag | Status | Notes |
 |---|------|-----|--------|-------|
@@ -88,10 +89,10 @@ Shared, living checklist of what's built and what isn't. Mirrors the phases/task
 | 3.6 | Won-board stamp + drawn treatment | 🤝 MIXED | ✅ | `stamp-in` scale animation; semi-transparent overlay |
 | 3.7 | Last-move indicator | 🤖 AFK | ✅ | Small dot on last-played cell + tint |
 | 3.8 | Typography choices | 🧑 HITL | ✅ | Caveat (headings) + Nunito (body) — **your call to change** |
-| 3.9 | Color & feel review | 🧑 HITL | ⬜ | **You:** review X terracotta / O teal / paper warmth |
-| — | **Acceptance gate:** matches aesthetic | 🧑 | ⬜ | |
+| 3.9 | Color & feel review | 🧑 HITL | ✅ | 2026-06-07 — accepted as part of v1 sign-off |
+| — | **Acceptance gate:** matches aesthetic | 🧑 | ✅ | 2026-06-07 — signed off |
 
-## Phase 4 — Mobile-First & Touch  ✅ (AFK complete)
+## Phase 4 — Mobile-First & Touch  ✅
 
 | # | Task | Tag | Status | Notes |
 |---|------|-----|--------|-------|
@@ -99,10 +100,10 @@ Shared, living checklist of what's built and what isn't. Mirrors the phases/task
 | 4.2 | `dvh` + safe-area | 🤖 AFK | ✅ | `100dvh`, `env(safe-area-inset-*)` on game + settings |
 | 4.3 | Tap-target sizing / small-screen | 🤖 AFK | ✅ | `min-width/height: 32px`; `touch-action: manipulation` |
 | 4.4 | Touch send-preview interaction | 🤝 MIXED | ✅ | Tap = preview pending mark; second tap = confirm; respects settings toggle |
-| 4.5 | Real-device testing | 🧑 HITL | ⬜ | **You:** verify comfort on your phone |
-| — | **Acceptance gate:** comfortable on phone | 🧑 | ⬜ | |
+| 4.5 | Real-device testing | 🧑 HITL | ✅ | 2026-06-07 — mobile run confirmed good on live URL |
+| — | **Acceptance gate:** comfortable on phone | 🧑 | ✅ | 2026-06-07 — signed off |
 
-## Phase 5 — Game Flow & Meta  ✅ (AFK complete)
+## Phase 5 — Game Flow & Meta  ✅
 
 | # | Task | Tag | Status | Notes |
 |---|------|-----|--------|-------|
@@ -112,27 +113,27 @@ Shared, living checklist of what's built and what isn't. Mirrors the phases/task
 | 5.4 | Settings (variant toggles) | 🤝 MIXED | ✅ | Slide-up panel: confirm-tap toggle + rules reminder |
 | 5.5 | Sound effects + mute | 🧑 HITL | ⏭️ | Deferred to v1.x — no assets chosen |
 | 5.6 | Local persistence (resume) | 🤖 AFK | ✅ | `localStorage` in `useGameReducer`; loads on mount, saves on every move |
-| — | **Acceptance gate:** loop complete | 🧑 | ⬜ | |
+| — | **Acceptance gate:** loop complete | 🧑 | ✅ | 2026-06-07 — signed off (sound 5.5 deferred to v1.x) |
 
-## Phase 6 — QA, A11y, Ship  🟡 (AFK complete; HITL pending)
+## Phase 6 — QA, A11y, Ship  ✅
 
 | # | Task | Tag | Status | Notes |
 |---|------|-----|--------|-------|
 | 6.1 | Keyboard navigation | 🤖 AFK | ✅ | Arrow keys across full 9×9 grid; Tab for HUD buttons |
 | 6.2 | ARIA / screen-reader labels | 🤖 AFK | ✅ | `role="grid"`, `role="group"`, `aria-label` on all interactive elements; `aria-live` hint |
 | 6.3 | Contrast + colorblind-safe | 🤖 AFK | ✅ | X=terracotta+label, O=teal+label; never color-only |
-| 6.4 | Cross-browser smoke test | 🤝 MIXED | ⬜ | **You:** open in Safari/Firefox and confirm renders |
+| 6.4 | Cross-browser smoke test | 🤝 MIXED | ✅ | 2026-06-07 — verified via live deploy incl. mobile browser |
 | 6.5 | Performance pass | 🤖 AFK | ✅ | JS 155 kB / 50 kB gzip; CSS 11 kB / 2.9 kB gzip |
 | 6.6 | Production build config | 🤖 AFK | ✅ | `netlify.toml` present from Phase 0 |
-| 6.7 | Deploy to public URL | 🧑 HITL | ⬜ | **You:** push branch + connect Netlify |
-| 6.8 | Final acceptance playtest | 🧑 HITL | ⬜ | Sign-off |
-| — | **v1 SHIP GATE** | 🧑 | ⬜ | |
+| 6.7 | Deploy to public URL | 🧑 HITL | ✅ | 2026-06-07 — live at https://tangerine-torte-c01620.netlify.app/ (HTTP 200) |
+| 6.8 | Final acceptance playtest | 🧑 HITL | ✅ | 2026-06-07 — user officially signed off |
+| — | **v1 SHIP GATE** | 🧑 | ✅ | 🚢 2026-06-07 — deployed, accessible, mobile-first, rules-correct, on-aesthetic |
 
 ---
 
 # v2 — Online Multiplayer
 
-*Not started until v1 ships.*
+*Not started until v1 ships.* **⏸️ Parked as of 2026-06-07** — v1 local hot-seat is satisfying as-is; v2 deferred to a later session. When resumed, start at Phase 7 (transport `ws` vs PartyKit/Durable Objects · hosting · persistence · auth). Engine is already DOM-free for server reuse.
 
 ## Phase 7 — Architecture & Decisions  ⬜
 
@@ -207,6 +208,8 @@ Brief running notes of notable progress (newest first).
 
 | Date | Update |
 |------|--------|
+| 2026-06-07 | 🚢 **v1 SHIPPED.** PR #2 merged to `master`; deployed to Netlify (https://tangerine-torte-c01620.netlify.app/, HTTP 200); mobile run verified; all Phase 3–6 HITL gates closed; official v1 sign-off. v1 = 6/6 phases complete. Next milestone: v2 online multiplayer (Phase 7). |
+| 2026-06-07 | Phase 2 signed off (2.9 ✅): full playthrough confirmed rules-correct. Phase 0 closed: GitHub remote confirmed live (`dglong/xo-plus`), prod build verified green. Deploy (6.7) in progress — user researching Netlify. Remaining: 4.5 mobile test, 6.7 deploy, 3.9/6.4 reviews. |
 | 2026-06-05 | Phases 2–6 AFK complete: full game UI, paper/pencil art, mobile layout, game flow (undo/persist/settings), a11y — on branch `v1-ui-phases-2-6`. |
 | 2026-06-05 | Phase 1 complete: full rules engine (`types`, `constants`, `state`, `rules`) + 43 unit tests covering every GDD §10 checklist item. |
 | 2026-06-04 | Phase 0 AFK tasks done: Vite+React+TS scaffold, SCSS, Vitest, ESLint, Prettier, folder structure. |

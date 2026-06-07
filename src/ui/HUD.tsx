@@ -29,7 +29,7 @@ export function HUD({ state, canUndo, onUndo, onNewGame, onSettings, pendingConf
   return (
     <header className="hud">
       <div className="hud__title-row">
-        <h1 className="hud__title">xo+</h1>
+        <h1 className="hud__title">XO Plus</h1>
 
         <div className="hud__controls">
           <button
