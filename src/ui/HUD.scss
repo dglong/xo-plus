@@ -1,0 +1,139 @@
+@use '../styles/variables' as *;
+
+.hud {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  animation: fade-in 0.25s ease-out both;
+
+  &__title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: $color-ink;
+  }
+
+  &__controls {
+    display: flex;
+    gap: $spacing-xs;
+  }
+
+  &__btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $border-radius-md;
+    font-size: 18px;
+    color: $color-ink-muted;
+    transition: color $transition-fast, background $transition-fast;
+
+    &:hover:not(:disabled) {
+      color: $color-ink;
+      background: $color-ink-faint;
+    }
+
+    &:disabled {
+      opacity: 0.3;
+    }
+  }
+
+  &__status {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+  }
+
+  &__player {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-weight: 600;
+    font-size: 15px;
+
+    &--x { color: $color-x; }
+    &--o { color: $color-o; }
+  }
+
+  &__player-mark {
+    display: flex;
+    align-items: center;
+    line-height: 0;
+
+    .mark__path {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  &__player-label {
+    font-family: $font-heading;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__score {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    margin-left: auto;
+  }
+
+  &__score-sep {
+    color: $color-ink-muted;
+    font-size: 12px;
+  }
+
+  &__score-x,
+  &__score-o {
+    display: flex;
+    gap: 3px;
+  }
+
+  &__pip {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    transition: background $transition-fast;
+
+    &--x {
+      background: $color-x-faint;
+      border: 1.5px solid $color-x-medium;
+
+      &.hud__pip--filled {
+        background: $color-x;
+        border-color: $color-x;
+      }
+    }
+
+    &--o {
+      background: $color-o-faint;
+      border: 1.5px solid $color-o-medium;
+
+      &.hud__pip--filled {
+        background: $color-o;
+        border-color: $color-o;
+      }
+    }
+  }
+
+  &__hint {
+    font-size: 13px;
+    color: $color-ink-muted;
+    font-style: italic;
+    min-height: 18px;
+    padding: 0 2px;
+  }
+}

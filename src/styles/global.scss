@@ -4,7 +4,10 @@
 body {
   background-color: $color-paper;
   color: $color-ink;
-  font-family: sans-serif;
+  font-family: $font-body;
+  font-size: 16px;
+  line-height: 1.5;
+  overscroll-behavior: none;
 }
 
 .app {
@@ -12,5 +15,59 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: $spacing-md;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  color: inherit;
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+*:focus-visible {
+  outline: 2px solid $color-x;
+  outline-offset: 3px;
+  border-radius: $border-radius-sm;
+}
+
+@keyframes draw-stroke {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes stamp-in {
+  from {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes victory-line {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes banner-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
 }

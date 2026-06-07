@@ -1,0 +1,90 @@
+@use '../styles/variables' as *;
+@use 'sass:color';
+
+.banner-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 36, 22, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md;
+  z-index: 100;
+  animation: fade-in 0.2s ease-out both;
+  backdrop-filter: blur(2px);
+}
+
+.banner {
+  background: $color-paper;
+  border-radius: $border-radius-lg;
+  padding: $spacing-xl $spacing-2xl;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-md;
+  max-width: 320px;
+  width: 100%;
+  box-shadow:
+    0 20px 60px rgba(44, 36, 22, 0.25),
+    0 4px 12px rgba(44, 36, 22, 0.15);
+  animation: banner-in $anim-banner cubic-bezier(0.34, 1.56, 0.64, 1) both;
+
+  &__mark {
+    width: 80px;
+    height: 80px;
+
+    .mark__path {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+
+    &--x .mark { color: $color-x; }
+    &--o .mark { color: $color-o; }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-xs;
+    text-align: center;
+  }
+
+  &__headline {
+    font-family: $font-heading;
+    font-size: clamp(36px, 10vw, 52px);
+    font-weight: 700;
+    line-height: 1;
+    color: $color-ink;
+  }
+
+  &__sub {
+    font-size: 14px;
+    color: $color-ink-muted;
+  }
+
+  &__btn {
+    margin-top: $spacing-sm;
+    padding: $spacing-sm $spacing-xl;
+    background: $color-ink;
+    color: $color-paper;
+    font-family: $font-heading;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: $border-radius-md;
+    transition: background $transition-fast, transform $transition-fast;
+    min-width: 140px;
+
+    &:hover {
+      background: color.adjust(#2c2416, $lightness: 15%);
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+
+    &:focus-visible {
+      outline-color: $color-o;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@use '../styles/variables' as *;
+
+.game {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 540px;
+  height: 100dvh;
+  margin: 0 auto;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+
+  &__board-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-xs $spacing-md $spacing-md;
+    min-height: 0; // prevent flex child overflow
+  }
+}
+
+// Constrain board to fit viewport with some breathing room
+.big-board {
+  max-width: min(
+    calc(100vw - #{$spacing-md * 2}),
+    calc(100dvh - 200px)
+  );
+}
+
+// On landscape phones, use horizontal layout
+@media (max-height: 480px) and (orientation: landscape) {
+  .game {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 100dvh;
+    max-width: 100%;
+  }
+
+  .hud {
+    width: 200px;
+    flex-shrink: 0;
+    justify-content: center;
+    padding: $spacing-md;
+  }
+
+  .game__board-area {
+    flex: 1;
+    padding: $spacing-sm;
+  }
+
+  .big-board {
+    max-width: min(
+      calc(100dvh - #{$spacing-sm * 2}),
+      calc(100vw - 220px)
+    );
+  }
+}
+
+// On wider screens, allow a bit more board padding
+@media (min-width: 600px) {
+  .game {
+    padding-top: $spacing-md;
+  }
+}
