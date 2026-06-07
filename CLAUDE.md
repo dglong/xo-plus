@@ -18,7 +18,7 @@ All project documents live in `docs/`. Keep this table in sync (see rules below)
 | Game Design Document | `docs/GAME_DESIGN_DOCUMENT.md` | Full rules, terminology, state model, UX/art direction, scope, AI plan, test checklist. | 2026-06-04 |
 | Development Plan | `docs/DEVELOPMENT_PLAN.md` | Phased v1 (local hot-seat) + v2 (online) build plan, with AFK/HITL tags per task and acceptance gates. | 2026-06-04 |
 | Testing | `docs/TESTING.md` | Test strategy/layers mapped to the GDD §10 checklist and the plan's acceptance gates. | 2026-06-04 |
-| Progress Tracker | `docs/PROGRESS.md` | Living, shared checklist of what's done vs not — mirrors the Development Plan's phases/tasks. Update as work lands. | 2026-06-04 |
+| Progress Tracker | `docs/PROGRESS.md` | Living, shared checklist of what's done vs not — mirrors the Development Plan's phases/tasks. Update as work lands. | 2026-06-07 |
 
 ---
 
